@@ -1,0 +1,10 @@
+.number{
+    font: 30px "Monospace";
+}
+
+.button{
+    background-color: #ffffff;
+    border: none;
+}
+
+.button:focus{outline: 0px;}

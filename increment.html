@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <title>Incrementer</title>
+    <head>
+        <title>Incrementer</title>
+        <link href="increment.css" type="text/css" rel="stylesheet"/>
+    </head>
     <body>
         <button id="clicker"
-                type="button">
-            Click!
+                type="button"
+                class="button">
+            <img src="imgs/button.png">
         </button>
         <button id="unclicker"
-                type="button">
-            Unclick!
+                type="button"
+                class="button">
+            <img src="imgs/unbutton.png">
         </button>
-        <p id="txt out"></p>
+        <p id="txt out" class="number"></p>
     </body>
     <script src="./increment.js"></script>
 </html>
