@@ -5,17 +5,30 @@
         <link href="increment.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        <button id="clicker"
-                type="button"
-                class="button">
-            <img id="buttonImg" src="imgs/button.png">
-        </button>
-        <button id="unclicker"
-                type="button"
-                class="button">
-            <img id="unbuttonImg" src="imgs/unbutton.png">
-        </button>
+        <div class="buttonWrapper">
+            <button id="clicker"
+                    type="button"
+                    class="button">
+                <img    id="buttonImg" 
+                        class="buttonsImg" 
+                        src="imgs/button.png">
+            </button>
+            <button id="unclicker"
+                    type="button"
+                    class="button">
+                <img    id="unbuttonImg"
+                        class="buttonsImg" 
+                        src="imgs/unbutton.png">
+            </button>
+        </div>
         <p id="txt out" class="number"></p>
+        <div class="shop">
+            Buyware
+            <p>
+                <button type="button" id="buyButtoneer">Buttoneer</button>
+                <button type="button" id="buyUnbuttoneer">Unbuttoneer</button>
+            </p>
+        </div>
     </body>
     <script src="./increment.js"></script>
 </html>

@@ -8,3 +8,30 @@
 }
 
 .button:focus{outline: 0px;}
+
+.buttonWrapper{
+    width: 250px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.buttonsImg{
+    image-rendering: pixelated;
+    width: 100px;
+    height: auto;
+}
+
+.buttonImg{
+    float: left;
+}
+
+.unbuttonImg{
+    float: right;
+}
+
+.shop{
+    width: 500px;
+    border: 1px solid #000000;
+    padding: 5px;
+}
