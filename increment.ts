@@ -11,19 +11,37 @@ class Purchasable {
     cost: number;
     value: number;
     count: number;
+
+    constructor(
+        newelementid: string,
+        newcost: number,
+        newvalue: number
+    ){
+        this.button = <HTMLButtonElement>document.getElementById(newelementid);
+        this.cost = newcost;
+        this.value = newvalue;
+        this.count = 0;
+    }
+    
+    updatetooltip() {
+        this.button.title = 
+            "cost: " + this.cost.toString() +
+            "\nvalue: " + this.value.toString() +
+            "\ncount: " + this.count.toString();
+    }
 };
 
-var purchases:Purchasable[] = [{
-        button: <HTMLButtonElement>document.getElementById("buyButtoneer"),
-        cost: 10,
-        value: 1,
-        count: 0,
-    },{
-        button: <HTMLButtonElement>document.getElementById("buyUnbuttoneer"),
-        cost: -10,
-        value: -1,
-        count: 0,
-    }
+var purchases:Purchasable[] = [
+    new Purchasable(
+        "buyButtoneer",
+        50,
+        1,
+    ),
+    new Purchasable(
+        "buyUnbuttoneer",
+        -50,
+        -1,
+    ),
 ]
 
 for(let i = 0; i < purchases.length; i++) {
@@ -31,7 +49,9 @@ for(let i = 0; i < purchases.length; i++) {
         clickCount -= purchases[i].cost;
         txtOut.innerHTML = clickCount.toString();
         purchases[i].count++;
+        purchases[i].updatetooltip();
     }
+    purchases[i].updatetooltip();
 }
 
 const dogametick = () => {
