@@ -52,7 +52,8 @@ var Upgrade = /** @class */ (function () {
 }());
 ;
 var upgrades = [
-    new Upgrade("upgradeButtoneer", function () { return clickCount >= 1000; }, function () { purchases[0].value++; purchases[0].updatetooltip(); })
+    new Upgrade("upgradeButtoneer", function () { return clickCount >= 1000; }, function () { purchases[0].value++; purchases[0].updatetooltip(); }),
+    new Upgrade("upgradeUnbuttoneer", function () { return clickCount <= -1000; }, function () { purchases[1].value--; purchases[1].updatetooltip(); }),
 ];
 var dogametick = function () {
     setTimeout(dogametick, 1000);

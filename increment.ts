@@ -85,7 +85,12 @@ var upgrades: Upgrade[] = [
         "upgradeButtoneer",
         () => {return clickCount >= 1000;},
         () => {purchases[0].value++; purchases[0].updatetooltip();},
-    )
+    ),
+    new Upgrade(
+        "upgradeUnbuttoneer",
+        () => {return clickCount <= -1000;},
+        () => {purchases[1].value--; purchases[1].updatetooltip();},
+    ),
 ]
 
 const dogametick = () => {
