@@ -6,10 +6,17 @@ var clickCount = 0;
 var txtOut = document.getElementById("txt out");
 var Purchasable = /** @class */ (function () {
     function Purchasable(newelementid, newcost, newvalue) {
+        var _this = this;
         this.button = document.getElementById(newelementid);
         this.cost = newcost;
         this.value = newvalue;
         this.count = 0;
+        this.button.onmousedown = function () {
+            clickCount -= _this.cost;
+            txtOut.innerHTML = clickCount.toString();
+            _this.count++;
+            _this.updatetooltip();
+        };
     }
     Purchasable.prototype.updatetooltip = function () {
         this.button.title =
@@ -24,23 +31,39 @@ var purchases = [
     new Purchasable("buyButtoneer", 50, 1),
     new Purchasable("buyUnbuttoneer", -50, -1),
 ];
-var _loop_1 = function (i) {
-    purchases[i].button.onmousedown = function () {
-        clickCount -= purchases[i].cost;
-        txtOut.innerHTML = clickCount.toString();
-        purchases[i].count++;
-        purchases[i].updatetooltip();
-    };
-    purchases[i].updatetooltip();
-};
 for (var i = 0; i < purchases.length; i++) {
-    _loop_1(i);
+    purchases[i].updatetooltip();
 }
+var Upgrade = /** @class */ (function () {
+    function Upgrade(newbutton, newconditioncheck, newonpurchase) {
+        var _this = this;
+        this.button = document.getElementById(newbutton);
+        this.conditioncheck = newconditioncheck;
+        this.onpurchase = newonpurchase;
+        this.button.onmousedown = function () {
+            if (_this.conditioncheck() && !_this.purchased) {
+                _this.purchased = true;
+                _this.onpurchase();
+                _this.button.style.visibility = "hidden";
+            }
+        };
+    }
+    return Upgrade;
+}());
+;
+var upgrades = [
+    new Upgrade("upgradeButtoneer", function () { return clickCount >= 1000; }, function () { purchases[0].value++; purchases[0].updatetooltip(); })
+];
 var dogametick = function () {
     setTimeout(dogametick, 1000);
     purchases.forEach(function (e) {
         clickCount +=
             e.count * e.value;
+    });
+    upgrades.forEach(function (e) {
+        if (e.conditioncheck() && !e.purchased) {
+            e.button.style.visibility = "visible";
+        }
     });
     txtOut.innerHTML = clickCount.toString();
 };
